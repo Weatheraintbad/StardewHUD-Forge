@@ -17,6 +17,7 @@
   "config.stardewhud.reset": "Reset",
   "config.stardewhud.subtitle": "Stardew Valley Style HUD",
   "config.stardewhud.page_indicator": "Page %d/%d",
+  "config.stardewhud.seasonDays.tooltip": "Number of days each season lasts (default 28 days)",
   "config.stardewhud.tooltip": "Tip: Click tabs at the top to switch between different settings pages",
 
   "title.stardewhud.config": "Stardew HUD Configuration",
@@ -76,5 +77,6 @@
   "stardewhud.label.backgroundAlpha": "Background Opacity:",
   "stardewhud.label.positionX": "X Position:",
   "stardewhud.label.positionY": "Y Position:",
+  "stardewhud.label.seasonDays": "Number of days in a season",
   "stardewhud.tip.position": "Tip: X and Y position 0 means auto-position at top right corner"
 }

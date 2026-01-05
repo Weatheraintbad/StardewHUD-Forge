@@ -17,6 +17,7 @@
   "config.stardewhud.reset": "重置",
   "config.stardewhud.subtitle": "星露谷风格HUD",
   "config.stardewhud.page_indicator": "第 %d/%d 页",
+  "config.stardewhud.seasonDays.tooltip": "每个季节持续的天数（默认28天）",
   "config.stardewhud.tooltip": "提示：点击顶部标签切换不同设置页面",
 
   "title.stardewhud.config": "星露谷HUD配置",
@@ -76,5 +77,7 @@
   "stardewhud.label.backgroundAlpha": "背景透明度:",
   "stardewhud.label.positionX": "X位置:",
   "stardewhud.label.positionY": "Y位置:",
+  "stardewhud.label.seasonDays": "季节天数",
   "stardewhud.tip.position": "提示：X和Y位置0表示自动定位在右上角"
+
 }
