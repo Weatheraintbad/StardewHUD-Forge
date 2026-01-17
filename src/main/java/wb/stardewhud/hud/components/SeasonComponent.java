@@ -17,7 +17,7 @@ public class SeasonComponent {
     private static final ResourceLocation WINTER_ICON = ResourceLocation.fromNamespaceAndPath(StardewHUD.MOD_ID, "textures/icons/fortune/winter.png");
 
     private long lastCalculatedDay = -1;
-    private ResourceLocation currentSeasonIcon = SPRING_ICON;
+    private ResourceLocation currentSeasonIcon = WINTER_ICON; // 初始化为冬季图标
 
     public SeasonComponent(HudRenderer hudRenderer) {
         this.hudRenderer = hudRenderer;
@@ -48,8 +48,18 @@ public class SeasonComponent {
             // 从配置中获取每个季节持续的天数
             int seasonDays = StardewHUD.getConfig().seasonDays;
 
-            // 计算季节索引（使用配置的天数）
-            int seasonIndex = (int)((dayFromTicks / seasonDays) % 4);
+            // 计算季节索引
+            int seasonIndex;
+
+            if (dayFromTicks == 0) {
+                // 第0天特殊处理：冬季
+                seasonIndex = 3; // 冬季
+            } else {
+                // 从第1天开始计算季节
+                // 注意：第1天到第28天是春季，所以用(dayFromTicks-1)来计算
+                long adjustedDay = dayFromTicks - 1; // 从第1天开始调整为第0天
+                seasonIndex = (int)((adjustedDay / seasonDays) % 4);
+            }
 
             // 获取新季节图标
             ResourceLocation newSeasonIcon = getSeasonIcon(seasonIndex);
@@ -100,7 +110,7 @@ public class SeasonComponent {
 
     public void reset() {
         lastCalculatedDay = -1;
-        currentSeasonIcon = SPRING_ICON;
+        currentSeasonIcon = WINTER_ICON; // 重置为冬季图标
         StardewHUD.LOGGER.debug("已重置SeasonComponent数据");
     }
 }

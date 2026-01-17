@@ -23,7 +23,7 @@ public class TimeDisplayComponent {
     };
 
     // 当前游戏数据
-    private long currentDay = 1; // 从1开始
+    private long currentDay = 0; // 从1开始
     private String currentWeekdayKey = WEEKDAY_KEYS[0];
     private String currentTime = "00:00";
 
@@ -147,7 +147,7 @@ public class TimeDisplayComponent {
                 } else if (dayDifference < 0) {
                     // 时间倒流（使用命令或重新加载世界）
                     currentDay = dayFromTicks;
-                    if (currentDay < 1) currentDay = 1; // 确保不小于1
+                    if (currentDay < 1) currentDay = 0; // 确保不小于1
                     StardewHUD.LOGGER.warn("检测到时间倒流，重新设置游戏日: 第{}天 (计算天数: {})",
                             currentDay, dayFromTicks);
                 }
