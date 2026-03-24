@@ -366,6 +366,7 @@ public class ModConfigScreen extends Screen {
         private Checkbox showFortuneCheckbox;
         private Checkbox showSeasonCheckbox;
         private Checkbox showItemCounterCheckbox;
+        private Checkbox enableLoggingCheckbox;
 
         @Override
         Component getTitle() {
@@ -431,6 +432,15 @@ public class ModConfigScreen extends Screen {
                     config.showItemCounter, true
             );
             addWidget(showItemCounterCheckbox);
+            y += spacing;
+
+            // 日志输出开关
+            enableLoggingCheckbox = new Checkbox(
+                    leftX, y, 200, 20,
+                    Component.translatable("config.stardewhud.enableLogging"),
+                    config.enableLogging, true
+            );
+            addWidget(enableLoggingCheckbox);
 
             initialized = true;
         }
@@ -445,6 +455,7 @@ public class ModConfigScreen extends Screen {
             config.showFortune = showFortuneCheckbox.selected();
             config.showSeason = showSeasonCheckbox.selected();
             config.showItemCounter = showItemCounterCheckbox.selected();
+            config.enableLogging = enableLoggingCheckbox.selected();
         }
 
         @Override
@@ -458,6 +469,7 @@ public class ModConfigScreen extends Screen {
             config.showFortune = defaults.showFortune;
             config.showSeason = defaults.showSeason;
             config.showItemCounter = defaults.showItemCounter;
+            config.enableLogging = defaults.enableLogging;
 
             showClockCheckbox.onPress();
             showWeatherCheckbox.onPress();
@@ -465,6 +477,9 @@ public class ModConfigScreen extends Screen {
             showFortuneCheckbox.onPress();
             showSeasonCheckbox.onPress();
             showItemCounterCheckbox.onPress();
+            if (enableLoggingCheckbox.selected() != defaults.enableLogging) {
+                enableLoggingCheckbox.onPress();
+            }
         }
 
         @Override

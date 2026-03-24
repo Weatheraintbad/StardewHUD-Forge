@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import wb.stardewhud.StardewHUD;
 
 import java.io.File;
 import java.io.FileReader;
@@ -36,6 +37,7 @@ public class ModConfig {
     public boolean showFortune = true;
     public boolean showItemCounter = true;
     public Boolean showSeason = true;
+    public boolean enableLogging = false; // 日志输出开关，默认关闭
 
     // 原版效果控制
     public boolean hideVanillaEffects = false; // 是否隐藏原版效果图标
@@ -76,13 +78,18 @@ public class ModConfig {
                 this.showFortune = loaded.showFortune;
                 this.showItemCounter = loaded.showItemCounter;
                 this.showSeason = loaded.showSeason != null ? loaded.showSeason : true; // 兼容旧配置，默认为true
+                this.enableLogging = loaded.enableLogging; // 加载日志开关配置
 
                 // 加载原版效果控制
                 this.hideVanillaEffects = loaded.hideVanillaEffects;
 
-                LOGGER.info("配置已加载");
+                if (StardewHUD.shouldLog()) {
+                    LOGGER.info("配置已加载");
+                }
             } catch (IOException e) {
-                LOGGER.error("加载配置时出错: ", e);
+                if (StardewHUD.shouldLog()) {
+                    LOGGER.error("加载配置时出错: ", e);
+                }
             }
         } else {
             save();
@@ -93,9 +100,13 @@ public class ModConfig {
     public void save() {
         try (FileWriter writer = new FileWriter(CONFIG_FILE)) {
             GSON.toJson(this, writer);
-            LOGGER.info("配置已保存");
+            if (StardewHUD.shouldLog()) {
+                LOGGER.info("配置已保存");
+            }
         } catch (IOException e) {
-            LOGGER.error("保存配置时出错: ", e);
+            if (StardewHUD.shouldLog()) {
+                LOGGER.error("保存配置时出错: ", e);
+            }
         }
     }
 }

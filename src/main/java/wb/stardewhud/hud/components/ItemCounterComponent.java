@@ -135,7 +135,9 @@ public class ItemCounterComponent {
             int physical = countItemInInventory(KUBEJS_COIN_ID) + countItemInPouches(KUBEJS_COIN_ID);
             int electronic = (int) getSDMMoneyReflect(mc.player);   // ← 零依赖反射
             itemCount = physical + electronic;
-            StardewHUD.LOGGER.info("[CoinHUD] 实物:{} + 电子:{} = 总计:{}", physical, electronic, itemCount);
+            if (StardewHUD.shouldLog()) {
+                StardewHUD.LOGGER.info("[CoinHUD] 实物:{} + 电子:{} = 总计:{}", physical, electronic, itemCount);
+            }
             return;
         }
 
@@ -157,7 +159,9 @@ public class ItemCounterComponent {
             java.lang.reflect.Method m = clazz.getMethod("getMoney", Player.class);
             return (Long) m.invoke(null, player);
         } catch (Exception e) {
-            StardewHUD.LOGGER.debug("[CoinHUD] SDMShop 未安装或方法变动，返回 0: {}", e.toString());
+            if (StardewHUD.shouldLog()) {
+                StardewHUD.LOGGER.debug("[CoinHUD] SDMShop 未安装或方法变动，返回 0: {}", e.toString());
+            }
         }
         return 0L;
     }

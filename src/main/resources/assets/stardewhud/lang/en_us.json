@@ -8,6 +8,7 @@
   "config.stardewhud.showSeason": "Show Season",
   "config.stardewhud.showItemCounter": "Show Item Counter",
   "config.stardewhud.hideVanillaEffects": "Hide Vanilla Effects",
+  "config.stardewhud.enableLogging": "Enable Logging",
   "config.stardewhud.counterItemId": "Counter Item ID",
   "config.stardewhud.scale": "HUD Scale",
   "config.stardewhud.backgroundAlpha": "Background Opacity",
@@ -39,8 +40,10 @@
   "option.stardewhud.showSeason": "Show Season",
   "option.stardewhud.showItemCounter": "Show Item Counter",
   "option.stardewhud.hideVanillaEffects": "Hide Vanilla Effects",
+  "option.stardewhud.enableLogging": "Enable Logging",
 
   "tip.stardewhud.effects": "Control vanilla Minecraft status effects display",
+  "tooltip.stardewhud.enableLogging": "When enabled, outputs detailed debug logs for troubleshooting issues",
   "tooltip.stardewhud.enabled": "Enable or disable the entire HUD",
   "tooltip.stardewhud.counterItemId": "Item ID to count in inventory (e.g. minecraft:diamond)",
   "tooltip.stardewhud.backgroundAlpha": "Transparency of the background (0.0 = fully transparent, 1.0 = fully opaque)",

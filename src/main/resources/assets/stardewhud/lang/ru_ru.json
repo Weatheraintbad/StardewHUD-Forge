@@ -8,6 +8,7 @@
   "config.stardewhud.showSeason": "Показать сезон",
   "config.stardewhud.showItemCounter": "Показать счетчик предметов",
   "config.stardewhud.hideVanillaEffects": "Скрыть эффекты Vanilla",
+  "config.stardewhud.enableLogging": "Включить ведение журнала",
   "config.stardewhud.counterItemId": "ID элемента счетчика",
   "config.stardewhud.scale": "Масштаб HUD",
   "config.stardewhud.backgroundAlpha": "Непрозрачность фона",
@@ -39,8 +40,10 @@
   "option.stardewhud.showSeason": "Показать сезон",
   "option.stardewhud.showItemCounter": "Показать счетчик предметов",
   "option.stardewhud.hideVanillaEffects": "Скрыть эффекты Vanilla",
+  "option.stardewhud.enableLogging": "Включить ведение журнала",
 
   "tip.stardewhud.effects": "Управление отображением статусных эффектов в Minecraft",
+  "tooltip.stardewhud.enableLogging": "При включении выводит подробные отладочные журналы для устранения неполадок",
   "tooltip.stardewhud.enabled": "Включить или отключить HUD",
   "tooltip.stardewhud.counterItemId": "ID предмета для подсчета в инвентаре (например, minecraft:diamond)",
   "tooltip.stardewhud.backgroundAlpha": "Прозрачность фона (0.0 = полностью прозрачный, 1.0 = полностью непрозрачный)",

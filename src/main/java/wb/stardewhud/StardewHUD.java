@@ -32,18 +32,24 @@ public class StardewHUD {
     }
 
     private void onClientSetup(final FMLClientSetupEvent event) {
-        LOGGER.info("StardewHUD 正在初始化...");
-
-        // 检查其他模组是否存在的工具方法
-        if (isModLoaded("modmenu")) {
-            LOGGER.info("检测到 ModMenu，配置界面将可用");
-        } else {
-            LOGGER.info("使用原生Forge配置界面");
-        }
-
         // 初始化配置
         config = new ModConfig();
         config.load();
+
+        if (shouldLog()) {
+            LOGGER.info("StardewHUD 正在初始化...");
+        }
+
+        // 检查其他模组是否存在的工具方法
+        if (isModLoaded("modmenu")) {
+            if (shouldLog()) {
+                LOGGER.info("检测到 ModMenu，配置界面将可用");
+            }
+        } else {
+            if (shouldLog()) {
+                LOGGER.info("使用原生Forge配置界面");
+            }
+        }
 
         // 初始化HUD渲染器
         hudRenderer = new HudRenderer(config);
@@ -51,7 +57,9 @@ public class StardewHUD {
         // 注册配置界面
         ConfigScreenManager.register();
 
-        LOGGER.info("StardewHUD 初始化完成！");
+        if (shouldLog()) {
+            LOGGER.info("StardewHUD 初始化完成！");
+        }
     }
 
     @SubscribeEvent
@@ -75,7 +83,9 @@ public class StardewHUD {
 
     public static ModConfig getConfig() {
         if (config == null) {
-            LOGGER.warn("配置还未初始化，正在创建默认配置...");
+            if (shouldLog()) {
+                LOGGER.warn("配置还未初始化，正在创建默认配置...");
+            }
             config = new ModConfig();
             config.load();
         }
@@ -85,5 +95,10 @@ public class StardewHUD {
     // 检查其他模组是否存在的工具方法
     public static boolean isModLoaded(String modId) {
         return ModList.get().isLoaded(modId);
+    }
+
+    // 检查是否应该输出日志
+    public static boolean shouldLog() {
+        return config != null && config.enableLogging;
     }
 }

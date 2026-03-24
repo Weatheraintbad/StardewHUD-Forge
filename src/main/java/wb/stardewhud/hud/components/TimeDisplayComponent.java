@@ -134,22 +134,28 @@ public class TimeDisplayComponent {
             if (lastCalculatedDay == -1) {
                 // 第一次计算，直接设置当前日
                 currentDay = dayFromTicks;
-                StardewHUD.LOGGER.info("初始化游戏日: 第{}天 (游戏时间: {}, 计算天数: {})",
-                        currentDay, timeOfDay, dayFromTicks);
+                if (StardewHUD.shouldLog()) {
+                    StardewHUD.LOGGER.info("初始化游戏日: 第{}天 (游戏时间: {}, 计算天数: {})",
+                            currentDay, timeOfDay, dayFromTicks);
+                }
             } else {
                 // 天数增加
                 long dayDifference = dayFromTicks - lastCalculatedDay;
                 if (dayDifference > 0) {
                     // 天数增加，需要同步更新显示的currentDay
                     currentDay += dayDifference;
-                    StardewHUD.LOGGER.info("检测到新的一天: 第{}天 (增加{}天, 计算天数: {})",
-                            currentDay, dayDifference, dayFromTicks);
+                    if (StardewHUD.shouldLog()) {
+                        StardewHUD.LOGGER.info("检测到新的一天: 第{}天 (增加{}天, 计算天数: {})",
+                                currentDay, dayDifference, dayFromTicks);
+                    }
                 } else if (dayDifference < 0) {
                     // 时间倒流（使用命令或重新加载世界）
                     currentDay = dayFromTicks;
                     if (currentDay < 1) currentDay = 0; // 确保不小于1
-                    StardewHUD.LOGGER.warn("检测到时间倒流，重新设置游戏日: 第{}天 (计算天数: {})",
-                            currentDay, dayFromTicks);
+                    if (StardewHUD.shouldLog()) {
+                        StardewHUD.LOGGER.warn("检测到时间倒流，重新设置游戏日: 第{}天 (计算天数: {})",
+                                currentDay, dayFromTicks);
+                    }
                 }
             }
 
@@ -174,7 +180,9 @@ public class TimeDisplayComponent {
         this.currentDay = Math.max(1, day);
         this.lastCalculatedDay = 0;
         updateWeekday();
-        StardewHUD.LOGGER.info("手动设置天数: 第{}天", currentDay);
+        if (StardewHUD.shouldLog()) {
+            StardewHUD.LOGGER.info("手动设置天数: 第{}天", currentDay);
+        }
     }
 
     public void syncWithWorldTime(Level world) {
@@ -185,8 +193,10 @@ public class TimeDisplayComponent {
         this.currentDay = dayFromTicks; // 从0开始显示
         this.lastCalculatedDay = dayFromTicks;
         updateWeekday();
-        StardewHUD.LOGGER.info("同步游戏日到世界时间: 第{}天 (游戏时间: {}, 计算天数: {})",
-                currentDay, timeOfDay, dayFromTicks);
+        if (StardewHUD.shouldLog()) {
+            StardewHUD.LOGGER.info("同步游戏日到世界时间: 第{}天 (游戏时间: {}, 计算天数: {})",
+                    currentDay, timeOfDay, dayFromTicks);
+        }
     }
 
     // 获取当前游戏日

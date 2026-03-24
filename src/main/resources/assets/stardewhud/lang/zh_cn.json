@@ -8,6 +8,7 @@
   "config.stardewhud.showSeason": "显示季节",
   "config.stardewhud.showItemCounter": "显示物品计数器",
   "config.stardewhud.hideVanillaEffects": "隐藏原版效果",
+  "config.stardewhud.enableLogging": "启用日志输出",
   "config.stardewhud.counterItemId": "计数器物品ID",
   "config.stardewhud.scale": "HUD缩放",
   "config.stardewhud.backgroundAlpha": "背景透明度",
@@ -39,8 +40,10 @@
   "option.stardewhud.showSeason": "显示季节",
   "option.stardewhud.showItemCounter": "显示物品计数器",
   "option.stardewhud.hideVanillaEffects": "隐藏原版效果",
+  "option.stardewhud.enableLogging": "启用日志输出",
 
   "tip.stardewhud.effects": "控制原版Minecraft状态效果的显示",
+  "tooltip.stardewhud.enableLogging": "开启后会输出详细的调试日志，用于排查问题",
   "tooltip.stardewhud.enabled": "启用或禁用整个HUD",
   "tooltip.stardewhud.counterItemId": "要统计的物品ID(例如：minecraft:diamond)",
   "tooltip.stardewhud.backgroundAlpha": "背景透明度(0.0=完全透明，1.0=完全不透明)",
